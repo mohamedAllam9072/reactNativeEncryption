@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React ,{useState}from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -25,7 +25,10 @@ import {
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
+  const [pubKey, setPublicKey] = useState('');
+  const [privateKey, setPrivateKey] = useState('');
+  const [encryptedMessage, setEncryptedMessage] = useState('');
+  const [decryptedMessage, setDecryptedMessage] = useState('');
   return (
     <SafeAreaView>
       <StatusBar
@@ -77,19 +80,18 @@ function App(): JSX.Element {
               }}
             />
           </View>
-          {/* <View style={{margin: 5}}>
-            <Text style={styles.text}>{decryptedMessage}</Text>
+          <View style={{margin: 5}}>
+            <Text style={styles.text}>{"decryptedMessage "+decryptedMessage}</Text>
           </View>
           <View style={{margin: 5}}>
-            <Text>{encryptedMessage}</Text>
+            <Text>{"encryptedMessage "+encryptedMessage}</Text>
           </View>
           <View style={{margin: 5}}>
-            <Text style={styles.text}>{pubKey}</Text>
+            <Text style={styles.text}>{"pubKey "+pubKey}</Text>
           </View>
           <View style={{margin: 5}}>
-            <Text>{privateKey}</Text>
+            <Text>{"privateKey "+privateKey}</Text>
           </View>
-        </View> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -112,6 +114,23 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+  },
+  text: {
+    flex :1,
+    justifyContent: 'center',
+    alignContent: 'center',
+    fontSize: 16,
+    lineHeight: 21,
+    color: 'black',
   },
 });
 
