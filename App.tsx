@@ -33,44 +33,6 @@ function App(): JSX.Element {
   const [encryptedMessage, setEncryptedMessage] = useState('');
   const [decryptedMessage, setDecryptedMessage] = useState('');
 
-  const generateKey =  (password: string, salt: string, cost: number, length: number) =>
-    Aes.pbkdf2(password, salt, cost, length);
-  const encryptData = (text: string, key: any) => {
-    return Aes.randomKey(16).then(iv => {
-      return Aes.encrypt(text, key, iv, 'aes-256-cbc').then(cipher => ({
-        cipher,
-        iv,
-      }));
-    });
-  };
-  const decryptData = (encryptedData: any, key: any) =>
-    Aes.decrypt(encryptedData.cipher, key, encryptedData.iv, 'aes-256-cbc');
-  try {
-    generateKey('Arnold', 'salt', 5000, 256).then(key => {
-      console.log('Key:', key);
-      encryptData('These violent delights have violent ends', key)
-        .then(({cipher, iv}) => {
-          console.log('Encrypted:', cipher);
-
-          decryptData({cipher, iv}, key)
-            .then(text => {
-              console.log('Decrypted:', text);
-            })
-            .catch(error => {
-              console.log(error);
-            });
-
-          Aes.hmac256(cipher, key).then(hash => {
-            console.log('HMAC', hash);
-          });
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    });
-  } catch (e) {
-    console.error(e);
-  }
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
