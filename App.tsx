@@ -3,6 +3,8 @@
  * https://github.com/facebook/react-native
  *
  * RSA ===>>>>==>>>  https://github.com/amitaymolko/react-native-rsa-native
+ * AES try1 ====>>>===>>> https://github.com/tectiv3/react-native-aes
+ * AES try2 ===>>>====>>> https://morioh.com/p/f0328bbf0ea4
  *
  * @format
  */
