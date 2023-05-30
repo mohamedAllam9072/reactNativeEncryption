@@ -6,6 +6,7 @@
  */
 
 import React ,{useState}from 'react';
+import { RSA } from 'react-native-rsa-native';
 import {
   SafeAreaView,
   ScrollView,
@@ -44,13 +45,13 @@ function App(): JSX.Element {
             <Button
               title="Generate Keys"
               onPress={() => {
-                // RSA.generateKeys(2048) // set key size
-                //   .then(keys => {
-                //     setPublicKey(keys.public);
-                //     setPrivateKey(keys.private);
-                //     setDecryptedMessage('')
-                //     setEncryptedMessage('');
-                //   });
+                RSA.generateKeys(2048) // set key size
+                  .then(keys => {
+                    setPublicKey(keys.public);
+                    setPrivateKey(keys.private);
+                    setDecryptedMessage('')
+                    setEncryptedMessage('');
+                  });
               }}
             />
           </View>
@@ -59,11 +60,11 @@ function App(): JSX.Element {
             <Button
               title="Encrypt"
               onPress={() => {
-                // let message = 'my secret message';
-                // RSA.encrypt(message, pubKey).then(encodedMessage => {
-                //   setEncryptedMessage(encodedMessage);
-                //  //console.log(`the encoded message is ${encryptedMessage}`);
-                // });
+                let message = 'my secret message';
+                RSA.encrypt(message, pubKey).then(encodedMessage => {
+                  setEncryptedMessage(encodedMessage);
+                 //console.log(`the encoded message is ${encryptedMessage}`);
+                });
               }}
             />
           </View>
@@ -71,12 +72,12 @@ function App(): JSX.Element {
             <Button
               title="Decrypt"
               onPress={() => {
-                // RSA.decrypt(encryptedMessage, privateKey).then(
-                //   decryptedMessage => {
-                //    setDecryptedMessage(decryptedMessage)
-                //    // console.log(`The original message was ${origianlMessage}`);
-                //   },
-                // );
+                RSA.decrypt(encryptedMessage, privateKey).then(
+                  decryptedMessage => {
+                   setDecryptedMessage(decryptedMessage)
+                   // console.log(`The original message was ${origianlMessage}`);
+                  },
+                );
               }}
             />
           </View>
