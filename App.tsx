@@ -5,14 +5,13 @@
  * RSA ===>>>>==>>>  https://github.com/amitaymolko/react-native-rsa-native
  * AES try1 ====>>>===>>> https://github.com/tectiv3/react-native-aes
  * AES try2 ===>>>====>>> https://morioh.com/p/f0328bbf0ea4
- *
+ * AES try3 ====>>>===>>> https://www.npmjs.com/package/crypto-js
+ * 
  * @format
  */
 
 import React, {useState} from 'react';
 import {RSA} from 'react-native-rsa-native';
-import {NativeModules, Platform} from 'react-native';
-import Aes from 'react-native-aes-crypto';
 import {
   SafeAreaView,
   ScrollView,
@@ -54,6 +53,7 @@ function App(): JSX.Element {
                     setRSAPrivateKey(keys.private);
                     setRSADecryptedMessage('');
                     setRSAEncryptedMessage('');
+                    console.log("rsaPublicKey"+keys.public)
                   });
               }}
             />
@@ -66,7 +66,16 @@ function App(): JSX.Element {
               title="Encrypt"
               onPress={() => {
                 let message = 'my secret message';
-                RSA.encrypt(message, rsaPublicKey).then(encodedMessage => {
+                const publicKey = `-----BEGIN RSA PUBLIC KEY-----
+                MIIBCgKCAQEA9sAyyYRdXwZHHyKO689LxlWGrvdRkmcFkkQrony6CqVnVylxJr3X
+                TBDuOLq5EpNr13ad/fMZpQjuIWJehPDYOqxSWOJQi9JygpyVF5Nv29F2BZu2eGih
+                n863CAbpkWTz6ntNqzoTX7nwYDYQzjzdGl5/qF4ikxGLVfmZoAWn4mKD/heb6POT
+                OXaOK/QBh455WdSZlZkMtDZJ1HEeV2dW8srw0h5F2g8GD5ZBLTH8wkWZZjKfU+Qt
+                CArseBgAP6nSclIMM26iTpHQtHRvF3XTplTGC8VSEXx6QQebvmmDJbsl0AregN/Z
+                /BN0QsrPH7J4ydsMbTdUUf/9wqoM4Lnx1QIDAQAB
+                -----END RSA PUBLIC KEY-----`;
+                  RSA.encrypt(message, publicKey).then(encodedMessage => {
+                  console.log("RSA Encrypt}}}}}}} ",encodedMessage)
                   setRSAEncryptedMessage(encodedMessage);
                 });
               }}
