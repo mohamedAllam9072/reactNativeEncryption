@@ -55,6 +55,20 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+             <View style={{margin: 5}}>
+              <Button
+                title="Reset ALL"
+                onPress={async () => {
+                  setRSAPublicKey('')
+                  setRSAPrivateKey('')
+                  setRSAEncryptedMessage('')
+                  setRSADecryptedMessage('')
+                  setAesKey('')
+                  setAes_iv('')
+                  setAesEncrypted('')
+                  setAesDecrypted('')
+                }}
+             /></View>
           <View
             style={{
               backgroundColor: '#fcba03',
