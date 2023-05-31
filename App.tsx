@@ -13,17 +13,11 @@
 import React, {useState} from 'react';
 import {RSA} from 'react-native-rsa-native';
 import Aes from 'react-native-aes-crypto';
-
-const generateKey = (password: any, salt: any, cost: any, length: any) =>
-  Aes.pbkdf2(password, salt, cost, length);
-const encryptData = (text: any, key: any, iv: any) => {
-  return Aes.encrypt(text, key, iv, 'aes-256-cbc').then(cipher => ({
-    cipher,
-  }));
-};
-const decryptData = (encryptedData: any, key: any, iv: any) =>
-  Aes.decrypt(encryptedData, key, iv, 'aes-256-cbc');
-
+import {
+  aes_generateKey,
+  aes_encryptData,
+  aes_decryptData,
+} from './securityHelper';
 import {
   SafeAreaView,
   ScrollView,
@@ -55,20 +49,21 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-             <View style={{margin: 5}}>
-              <Button
-                title="Reset ALL"
-                onPress={async () => {
-                  setRSAPublicKey('')
-                  setRSAPrivateKey('')
-                  setRSAEncryptedMessage('')
-                  setRSADecryptedMessage('')
-                  setAesKey('')
-                  setAes_iv('')
-                  setAesEncrypted('')
-                  setAesDecrypted('')
-                }}
-             /></View>
+          <View style={{margin: 5}}>
+            <Button
+              title="Reset ALL"
+              onPress={async () => {
+                setRSAPublicKey('');
+                setRSAPrivateKey('');
+                setRSAEncryptedMessage('');
+                setRSADecryptedMessage('');
+                setAesKey('');
+                setAes_iv('');
+                setAesEncrypted('');
+                setAesDecrypted('');
+              }}
+            />
+          </View>
           <View
             style={{
               backgroundColor: '#fcba03',
@@ -79,7 +74,7 @@ function App(): JSX.Element {
                 onPress={async () => {
                   try {
                     const IV = await Aes.randomKey(16);
-                    generateKey('Arnold', 'salt', 5000, 256).then(key => {
+                    aes_generateKey('Arnold', 'salt', 5000, 256).then(key => {
                       setAesKey(key);
                     });
                     setAes_iv(IV);
@@ -95,7 +90,7 @@ function App(): JSX.Element {
                 title="AES Encrypt"
                 onPress={() => {
                   try {
-                    encryptData('my massage', aesKey, aes_iv)
+                    aes_encryptData('my massage', aesKey, aes_iv)
                       .then(({cipher}) => {
                         setAesEncrypted(cipher);
                       })
@@ -111,7 +106,7 @@ function App(): JSX.Element {
               <Button
                 title="AES Decrypt"
                 onPress={() => {
-                  decryptData(aesEncrypted, aesKey, aes_iv)
+                  aes_decryptData(aesEncrypted, aesKey, aes_iv)
                     .then(text => {
                       console.log('Decrypted:', text);
                       setAesDecrypted(text);
