@@ -12,7 +12,6 @@
 
 import React, {useState} from 'react';
 import {RSA} from 'react-native-rsa-native';
-import Aes from 'react-native-aes-crypto';
 import {
   aes_generateKey,
   aes_encryptData,
@@ -73,27 +72,20 @@ function App(): JSX.Element {
                 title="AES Generate Key"
                 onPress={async () => {
                   try {
-                    //const IV = await Aes.randomKey(16);
-                   // const IV = '00000000000000000000000000000000';
-                    const IV = 'd21f145dc3a9263f27fc1017c97ad417';
-                    aes_generateKey(await Aes.randomKey(16)).then(key => {
+                    aes_generateKey().then(key => {
                       setAesKey(key);
                     });
-                    setAes_iv(IV);
-                    console.log(IV)
                   } catch (e) {
                     console.error(e);
                   }
                 }}
               />
               <Text style={styles.text}>{aesKey}</Text>
-              <Text style={styles.text}>{}</Text>
-              <Text style={styles.text}>{aes_iv}</Text>
               <Button
                 title="AES Encrypt"
                 onPress={() => {
                   try {
-                    aes_encryptData('my massage', aesKey, aes_iv)
+                    aes_encryptData('my massage', aesKey)
                       .then(({cipher}) => {
                         setAesEncrypted(cipher);
                       })
@@ -109,7 +101,7 @@ function App(): JSX.Element {
               <Button
                 title="AES Decrypt"
                 onPress={() => {
-                  aes_decryptData(aesEncrypted, aesKey, aes_iv)
+                  aes_decryptData(aesEncrypted, aesKey)
                     .then(text => {
                       console.log('Decrypted:', text);
                       setAesDecrypted(text);
