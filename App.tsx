@@ -73,11 +73,14 @@ function App(): JSX.Element {
                 title="AES Generate Key"
                 onPress={async () => {
                   try {
-                    const IV = await Aes.randomKey(16);
-                    aes_generateKey('Arnold', 'salt', 5000, 256).then(key => {
+                    //const IV = await Aes.randomKey(16);
+                   // const IV = '00000000000000000000000000000000';
+                    const IV = 'd21f145dc3a9263f27fc1017c97ad417';
+                    aes_generateKey(await Aes.randomKey(16)).then(key => {
                       setAesKey(key);
                     });
                     setAes_iv(IV);
+                    console.log(IV)
                   } catch (e) {
                     console.error(e);
                   }
