@@ -145,7 +145,7 @@ function App(): JSX.Element {
                 CArseBgAP6nSclIMM26iTpHQtHRvF3XTplTGC8VSEXx6QQebvmmDJbsl0AregN/Z
                 /BN0QsrPH7J4ydsMbTdUUf/9wqoM4Lnx1QIDAQAB
                 -----END RSA PUBLIC KEY-----`;
-                  RSA.encrypt(message, publicKey).then(encodedMessage => {
+                  RSA.encrypt(message, rsaPublicKey).then(encodedMessage => {
                     console.log('RSA Encrypt}}}}}}} ', encodedMessage);
                     setRSAEncryptedMessage(encodedMessage);
                   });
