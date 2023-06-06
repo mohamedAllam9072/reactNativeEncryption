@@ -2,10 +2,8 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
- * RSA ===>>>>==>>>  https://github.com/amitaymolko/react-native-rsa-native
- * AES try1 ====>>>===>>> https://github.com/tectiv3/react-native-aes
- * AES try2 ===>>>====>>> https://morioh.com/p/f0328bbf0ea4
- * AES try3 ====>>>===>>> https://www.npmjs.com/package/crypto-js
+ * RSA >>>>>>  https://github.com/amitaymolko/react-native-rsa-native
+ * AES >>>>>>  https://github.com/tectiv3/react-native-aes
  *
  * @format
  */
