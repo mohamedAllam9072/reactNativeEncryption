@@ -128,6 +128,7 @@ function App(): JSX.Element {
                       setRSADecryptedMessage('');
                       setRSAEncryptedMessage('');
                       console.log('rsaPublicKey' + keys.public);
+                      console.log('rsaPrivateKey' + keys.private);
                     });
                 }}
               />
@@ -150,14 +151,14 @@ function App(): JSX.Element {
                 -----END RSA PUBLIC KEY-----`;
 
                   const publicKey2 = `-----BEGIN PUBLIC KEY-----
-                MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy7no4fYr7EIf3HU4jBAw
-                S6S3KaRU0SP3PupT2Lo0QbTIjTVzl8N2+UkwmTOckW9aI2zerKZ40RjUFPehxPJe
-                i5v1GL9cERKY06xtV53VvCAKsPJKr4t6ql1WEB5hZY+it/lG6Y2W16GGbygeONx2
-                NH5FU91W1p1Fc7a9Ot3kKlCxEAcGvynOykEgAmkxkpPfV58G2wahOG1L+yC9ScjE
-                7JEbtQh6RDc5pxmMc9V+TERQ9DL3PKQVONA+wpzqTKp2VqfgtkoiRQY2c42nLmpn
-                f4z9RYkTUvmZvEHmZPjRlSt/xTIfnzeKCkH0CKMY74MQVzgrR+nC8e5u4XaIcRPR
-                QQIDAQAB
-                -----END PUBLIC KEY-----`;
+                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy7no4fYr7EIf3HU4jBAw
+                  S6S3KaRU0SP3PupT2Lo0QbTIjTVzl8N2+UkwmTOckW9aI2zerKZ40RjUFPehxPJe
+                  i5v1GL9cERKY06xtV53VvCAKsPJKr4t6ql1WEB5hZY+iT/lG6Y2W16GGbygeONx2
+                  NH5FU91W1p1Fc7a9Ot3kKlCxEAcGvynOykEgAmkxkpPfV58G2wahOG1L+yC9ScjE
+                  7JEbtQh6RDc5pxmMc9V+TERQ9DL3PKQVONA+wpzqTKp2VqfgtkoiRQY2c42nLmpn
+                  f4z9RYkTUvmZvEHmZPjRlSt/xTIfnzeKCkH0CKMY74MQVzgrR+nC8e5u4XaIcRPR
+                  QQIDAQAB
+                  -----END PUBLIC KEY-----`;
                   RSA.encrypt(message, publicKey2).then(function (
                     encodedMessage,
                   ) {
@@ -172,34 +173,33 @@ function App(): JSX.Element {
               <Button
                 title="Decrypt"
                 onPress={() => {
-                  const privateKey2 = `-----BEGIN PRIVATE KEY-----
-                  MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLuejh9ivsQh/c
-                  dTiMEDBLpLcppFTRI/c+6lPYujRBtMiNNXOXw3b5STCZM5yRb1ojbN6spnjRGNQU
-                  96HE8l6Lm/UYv1wREpjTrG1XndW8IAqw8kqvi3qqXVYQHmFlj6JP+UbpjZbXoYZv
-                  KB443HY0fkVT3VbWnUVztr063eQqULEQBwa/Kc7KQSACaTGSk99XnwbbBqE4bUv7
-                  IL1JyMTskRu1CHpENzmnGYxz1X5MRFD0Mvc8pBU40D7CnOpMqnZWp+C2SiJFBjZz
-                  jacuamd/jP1FiRNS+Zm8QeZk+NGVK3/FMh+fN4oKQfQIoxjvgxBXOCtH6cLx7m7h
-                  dohxE9FBAgMBAAECggEACS36UVwvRHkCSIO7pYwBMRdd7XFrJPVS6bHTT1usiR1l
-                  P/+dksQK81aZ6v1JW8BBtoDsU6k4nmtY+wzhbCdjnTTMyW2t71MAMeF+F8mT3OMw
-                  uCJivSAyycRk4VsNFm9vZ90aleF8X4D2tsF/Ax7j8J+T7iB2DjuN6pXcVu+ynTlq
-                  9SiFRRdDYMd2uWzRPkeq8Tqn08a536OD0X0ZyZ3ij0mYEpl+Td8D6RWm3ZuPVPzE
-                  OBoyeNSjzHmltAwssmhkst4qrsez4+vmGk6WCIVonVZGW4yPdcnYSiqoPxyWzKw2
-                  OloccoQLW1AjqOEjPxXuiLI+BC4Mmn+oUeTNwqPqMQKBgQDYtAHkXMbRobf5nUU/
-                  MkKBiPvVSYhqyNu7bcUI5icADTtamxdgEfYtJjNtHkX7Wk+GDTXvcu50Q4euh9S/
-                  76Ywyqq+xG2I9+56FyVZkkL4AJmkGUE+GnW9a9TPiHvdgplHcUcb114MY73BqG63
-                  kEiH2X3Yll9kg5UUD7NDwCZQdQKBgQDwq3mGHPy9LSTkFfGxyFr4TOUpNWDw9txA
-                  y7JJFvA1pKGqMq++yrd9BTpkDt7AtW/gacUQipagFMztBBcTr7Zp2RG3qmT+Ph0F
-                  mPHwlKkHDgBKtfQsv7o1mvxEkVdAFAs//pWN6Z3brgP7f5rAijZReWmjXeClTBVR
-                  Un0qNjNkHQKBgQDM1foj3f6hEPhSHnLiNaPfxZgmGAe2yH3LQQtKSiL7TYaZMph5
-                  2wCT1NQvhLopyUf6MmqVGFKF239ZXlOfyeuRm0CiahIPsivdhBtt+28J9adFEgo1
-                  pdU9Y7wZH63VyCkS+uR4UK85jt5DO+7L3LpyjwcBv8ITxL0Z5W1R0UNmMQKBgHvb
-                  w+8BfBDf6tx3bqvQMQEYkddjYUChyziNnHOBGp6A27J743aNXWE6D5LvFDSZK7qS
-                  tJiOunYoPk68jCPViktvK28agl9WGBmJXPozh8nZqszIV6GwCmUMHkgrhHu11RRa
-                  MR2X3WXxaJtGUJ5Ggy3rDjLFXZe0UERJ76CJxGkBAoGARmR6qBpeWkIyVxvOI9U5
-                  WGtuKrVtElx6Ui5hFlhOks74Qo4BG1k1giru7JuRwDrVHqnjtkFqQOvqEICcufy6
-                  vF1qRU406p73wg/Lk7mo8mSZQWIaG4S7JZdgVdlrY2Z5NI/MeGHqj6ZsCkWklGLx
-                  IcbCLW5PFiEm58YNW6/DNpU=
-                  -----END PRIVATE KEY-----`;
+                  const privateKey2 = `-----BEGIN RSA PRIVATE KEY-----
+                  MIIEowIBAAKCAQEAy7no4fYr7EIf3HU4jBAwS6S3KaRU0SP3PupT2Lo0QbTIjTVz
+                  l8N2+UkwmTOckW9aI2zerKZ40RjUFPehxPJei5v1GL9cERKY06xtV53VvCAKsPJK
+                  r4t6ql1WEB5hZY+iT/lG6Y2W16GGbygeONx2NH5FU91W1p1Fc7a9Ot3kKlCxEAcG
+                  vynOykEgAmkxkpPfV58G2wahOG1L+yC9ScjE7JEbtQh6RDc5pxmMc9V+TERQ9DL3
+                  PKQVONA+wpzqTKp2VqfgtkoiRQY2c42nLmpnf4z9RYkTUvmZvEHmZPjRlSt/xTIf
+                  nzeKCkH0CKMY74MQVzgrR+nC8e5u4XaIcRPRQQIDAQABAoIBAAkt+lFcL0R5AkiD
+                  u6WMATEXXe1xayT1Uumx009brIkdZT//nZLECvNWmer9SVvAQbaA7FOpOJ5rWPsM
+                  4WwnY500zMltre9TADHhfhfJk9zjMLgiYr0gMsnEZOFbDRZvb2fdGpXhfF+A9rbB
+                  fwMe4/Cfk+4gdg47jeqV3Fbvsp05avUohUUXQ2DHdrls0T5HqvE6p9PGud+jg9F9
+                  Gcmd4o9JmBKZfk3fA+kVpt2bj1T8xDgaMnjUo8x5pbQMLLJoZLLeKq7Hs+Pr5hpO
+                  lgiFaJ1WRluMj3XJ2EoqqD8clsysNjpaHHKEC1tQI6jhIz8V7oiyPgQuDJp/qFHk
+                  zcKj6jECgYEA2LQB5FzG0aG3+Z1FPzJCgYj71UmIasjbu23FCOYnAA07WpsXYBH2
+                  LSYzbR5F+1pPhg0173LudEOHrofUv++mMMqqvsRtiPfuehclWZJC+ACZpBlBPhp1
+                  vWvUz4h73YKZR3FHG9deDGO9wahut5BIh9l92JZfZIOVFA+zQ8AmUHUCgYEA8Kt5
+                  hhz8vS0k5BXxscha+EzlKTVg8PbcQMuySRbwNaShqjKvvsq3fQU6ZA7ewLVv4GnF
+                  EIqWoBTM7QQXE6+2adkRt6pk/j4dBZjx8JSpBw4ASrX0LL+6NZr8RJFXQBQLP/6V
+                  jemd264D+3+awIo2UXlpo13gpUwVUVJ9KjYzZB0CgYEAzNX6I93+oRD4Uh5y4jWj
+                  38WYJhgHtsh9y0ELSkoi+02GmTKYedsAk9TUL4S6KclH+jJqlRhShdt/WV5Tn8nr
+                  kZtAomoSD7Ir3YQbbftvCfWnRRIKNaXVPWO8GR+t1cgpEvrkeFCvOY7eQzvuy9y6
+                  co8HAb/CE8S9GeVtUdFDZjECgYB728PvAXwQ3+rcd26r0DEBGJHXY2FAocs4jZxz
+                  gRqegNuye+N2jV1hOg+S7xQ0mSu6krSYjrp2KD5OvIwj1YpLbytvGoJfVhgZiVz6
+                  M4fJ2arMyFehsAplDB5IK4R7tdUUWjEdl91l8WibRlCeRoMt6w4yxV2XtFBESe+g
+                  icRpAQKBgEZkeqgaXlpCMlcbziPVOVhrbiq1bRJcelIuYRZYTpLO+EKOARtZNYIq
+                  7uybkcA61R6p47ZBakDr6hCAnLn8urxdakVONOqe98IPy5O5qPJkmUFiGhuEuyWX
+                  YFXZa2NmeTSPzHhh6o+mbApFpJRi8SHGwi1uTxYhJufGDVuvwzaV
+                  -----END RSA PRIVATE KEY-----`;
                   const session = `PgCtHQW8W2OwRKzX+nSWk+vFd+Qtr8tS6SqGqnxOCKQ45h5TLAgfdOkFPbYVw9iOvqYJyVoetDVd8StC/U6T6B3nTNQug+fPf2Rx/orznjccyyR0a0IF+D6TnxizoUFuw4hR931BxzXwEqPDuhb8qx14+Bhub4vszjZ21TzHWCkIArtogW5qD94efYKc7HMYDkNdz4uQyyLBJbUeKG1yAwYvaw9o59QS0AK92qlL/b/0oKe9gSy9wjEk/gmCWF0F1oaeYA2ah8bj6DqSlcHB22aEps9zPYj2TDBegMxd1v/LYZA8Xch9RJ3144OpCFOBxYyU4OtSPP2W31gIiNxzfQ==`;
                   RSA.decrypt(rsaEncryptedMessage, privateKey2).then(
                     decryptedMessage => {
