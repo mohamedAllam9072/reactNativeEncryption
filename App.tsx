@@ -143,24 +143,25 @@ function App(): JSX.Element {
                   let message = 'my secret message';
                   let msg2 =
                     '427932b2c56ef5e221402bdd9abbb2b44bc6d670b9fc7cf31b418b9116508fa9';
+                  let msg3 = 'Ali Maâloul Tunisian football player';
                   const publicKey = `-----BEGIN RSA PUBLIC KEY-----
-                MIIBCgKCAQEA9sAyyYRdXwZHHyKO689LxlWGrvdRkmcFkkQrony6CqVnVylxJr3X
-                TBDuOLq5EpNr13ad/fMZpQjuIWJehPDYOqxSWOJQi9JygpyVF5Nv29F2BZu2eGih
-                n863CAbpkWTz6ntNqzoTX7nwYDYQzjzdGl5/qF4ikxGLVfmZoAWn4mKD/heb6POT
-                OXaOK/QBh455WdSZlZkMtDZJ1HEeV2dW8srw0h5F2g8GD5ZBLTH8wkWZZjKfU+Qt
-                CArseBgAP6nSclIMM26iTpHQtHRvF3XTplTGC8VSEXx6QQebvmmDJbsl0AregN/Z
-                /BN0QsrPH7J4ydsMbTdUUf/9wqoM4Lnx1QIDAQAB
-                -----END RSA PUBLIC KEY-----`;
+                  MIIBCgKCAQEA1marKp4ZDKpNlxrpDesix2LFM0AA0evzxMWt/O4YwVB2BePySoAm
+                  uGrM7w78+dMsYMc7epP/IR0I+zIU2epC0tathBVRtTLnu83a8zrq1ONlB4/pOj3N
+                  0vmgYQ4Sb03KZw5Kf+W8TBloVIuaMXX+YOCrlAOwFEdaWvCl161sq7/TAjlIAeZj
+                  QnCBWJRVciZJCL/VnbY7QgFk0IKwJzUpZz0Wa545S9CGTXiobuDPRC36Rhi6LgED
+                  M14Xkn1VliR9S5jlbLH2PuqkCNK5iab3vf5U8s7X1xcMOl+/w6z3IIFRXqtK00Dc
+                  ImpHeTPnn2u6ekYuPGw/i69B6wQ4LZ6PswIDAQAB
+                  -----END RSA PUBLIC KEY-----`;
 
                   const publicKey2 = `-----BEGIN RSA PUBLIC KEY-----
-                  MIIBCgKCAQEA1Ts98CmYk2ZZ7IfaJpDdtu/WWpeAwWg1qTLt1VkJR1eOEoLp8qHv
-                  hMR8Sr4imyvHLOJexECY++BBX9ofNGcTAdZGbpdM51nXtMS8yumCaSQekubRsx0D
-                  o337bK4qfIxXv12SfGKrVuoaoxbfu3uFC1eMoqcavinU/PYkqQD/LA08e0F7T266
-                  w/JxogmeAigi2deqjG7NE51/KeFhSHEjB1t6oSkrLVtutVeS30vmy95tSXWv1YNe
-                  47GuJA60CVjAbtgPE1DdRwtHpkJhio0jqxOmRI6e2b8/shzdf6A1aLhxcjwbVBHZ
-                  oW9OB0LPPO7kcBaEW4yAgnxP6QS2xpL1DQIDAQAB
+                  MIIBCgKCAQEA33f7RgfaVvAhb40OSlaYznSVhgm8BmpIPwKAIIFVkBXj4Q8HIatz
+                  0k04C4i4A9Y+8H0mh+RfnOv6umZ3pCw6oCG5F6ol6p8aVNWz2nTZCBIzOWWslJjg
+                  5TN4IzPP76nbiBxSDp9xhHgwRrxA6JzIhTMF1Z+gbAJq9+m1kJ6CAlFYA8KJxTXD
+                  /c+69eH1UMmRwToPfkz5iTdJ9uBcfGTSZKcJKkKZN4MZZRg5EPqIoEr0NDJsH5yC
+                  iSafFHT2gwUYpuwVe5GQVuOTfMg8RYUsZbmnDOs4j3penlkjUNpY4CHbcjGNjt5W
+                  Hc0ojk+/yJiVKSc5wc2nNR4waeWVOaYquQIDAQAB
                   -----END RSA PUBLIC KEY-----`;
-                  RSA.encrypt(msg2, publicKey2).then(function (encodedMessage) {
+                  RSA.encrypt(msg3, publicKey).then(function (encodedMessage) {
                     console.log('RSA Encrypt', encodedMessage);
                     setRSAEncryptedMessage(encodedMessage);
                   });
@@ -173,39 +174,37 @@ function App(): JSX.Element {
                 title="Decrypt"
                 onPress={() => {
                   const privateKey2 = `-----BEGIN RSA PRIVATE KEY-----
-                  MIIEowIBAAKCAQEA1Ts98CmYk2ZZ7IfaJpDdtu/WWpeAwWg1qTLt1VkJR1eOEoLp
-                  8qHvhMR8Sr4imyvHLOJexECY++BBX9ofNGcTAdZGbpdM51nXtMS8yumCaSQekubR
-                  sx0Do337bK4qfIxXv12SfGKrVuoaoxbfu3uFC1eMoqcavinU/PYkqQD/LA08e0F7
-                  T266w/JxogmeAigi2deqjG7NE51/KeFhSHEjB1t6oSkrLVtutVeS30vmy95tSXWv
-                  1YNe47GuJA60CVjAbtgPE1DdRwtHpkJhio0jqxOmRI6e2b8/shzdf6A1aLhxcjwb
-                  VBHZoW9OB0LPPO7kcBaEW4yAgnxP6QS2xpL1DQIDAQABAoIBAGhQVAuyfbbWYnWJ
-                  PFqTkjOVfzrQVSfI0D+W76zootZo6dL6gnK1b9R2vwtdmtZog0bc81l09KJ74d9/
-                  eLaNGkpSxiACGpgvZoxDlsx5kdfX2LErBDlon0gTMLXJOnW1vpOatjftmT6qxh80
-                  6Hzyf3K+AMntj/Kpyk16KRMYrrygVC48DUHpvEbnHi386TdEg0JUbbX0afEpSlBI
-                  WyCuz/yIdPnyI8LTPPSlTn4OwiIk+HW01iMCVYLkOnVt0XZGBolJciwYDK4xpuxr
-                  BILIEnHTth2yktNBiCfsjXUY8s9fiWyGhDm3qoa/7uH/Xq2SGrZPKylrRseqHV3d
-                  fVDb9k0CgYEA9YMJOfqYGiO2nN8xhBLXNsmdVpzvrXbQLPm29AtA4jbEsCTFl8on
-                  0v7qag7aFDyCqtrXOhFCxai3jvkzLBJ/p6nGdY/XFNY1Cb52+qgQojK/E5FgOdNf
-                  l5YDP+bsfYVVKoXiiiYTiCsRwmUrUB6bRz7VnBmsiMtwb2slu88qfOcCgYEA3lcu
-                  TV9rFDVeya1pity0q/iIET5cenVvao+kcmOOSuWV4Gq3vNY24DLwX0iS2JTPq3JO
-                  Ou+dKXUn/dNhz9/bIFxfWg3h0YaHZCTc00ODQlG5A5fsdctW3sEDFFteIVUo/21S
-                  DCS1P1+e/+ZsatJWU5v+ucPnS8uTe2+9NhU8q+sCgYAfCXK4Jqrl2w/x4vFijfMx
-                  FOnUEkDmf/evR95OGcIZFu1kizGDj+Xa8aj2wWvmVQP7z3CYAaicTkjuRSin8Kq8
-                  qmTRZd693pqT4cUuyOJZburi8WTlyofyJN/CS1IoSBvNJWHPLyMW+sLi/WEtXsEo
-                  j5P3iPNb08QiAbyicn0fjwKBgQDdd/mnGGSQvJiuSw3WRAGzStw+UN/NGyzf+DTV
-                  vFUARbAE2kgq0TXYHOVSA/hBw/kXzcQe8I6bvRcYvnWvmkuq8FgKW8mT62zxU8ai
-                  qZ0VclHYQnxG2USunZNzs48PpMQxqbMQZYAkoBrAy8UyolFa9wfEAl9iIGXHjoXq
-                  WT0WAQKBgAm0WDBL7bHJxcQZFBKjg7aVf9vK/7oo3dmaSjctJaEBeF9wN8b95ANX
-                  N13kPT/lTNXo1jjL/r4oGe/FrqqiGcVlWVhbvidyHKpR2wgsmpv9n1DpYLK8B7T/
-                  6Ji7+jmos9I0xd2Lqoj51yQFJg4tfotRTZACL/OmcWr4Y/7c2DB/
+                  MIIEpQIBAAKCAQEA33f7RgfaVvAhb40OSlaYznSVhgm8BmpIPwKAIIFVkBXj4Q8H
+                  Iatz0k04C4i4A9Y+8H0mh+RfnOv6umZ3pCw6oCG5F6ol6p8aVNWz2nTZCBIzOWWs
+                  lJjg5TN4IzPP76nbiBxSDp9xhHgwRrxA6JzIhTMF1Z+gbAJq9+m1kJ6CAlFYA8KJ
+                  xTXD/c+69eH1UMmRwToPfkz5iTdJ9uBcfGTSZKcJKkKZN4MZZRg5EPqIoEr0NDJs
+                  H5yCiSafFHT2gwUYpuwVe5GQVuOTfMg8RYUsZbmnDOs4j3penlkjUNpY4CHbcjGN
+                  jt5WHc0ojk+/yJiVKSc5wc2nNR4waeWVOaYquQIDAQABAoIBAAmrd5Es1RD6wFmj
+                  Pw1usJtLbm5vxKX66qAmX6y4Z/9NgTA7jh2R/ZeprX2LR5or5sqRgc2yz0PbLrzq
+                  4u20178W4ntgipY71v/5hNg0wvDvV63ZxVVjRaUJXH8adnqajSQ3RII7OkZnDIC9
+                  E+p04VTpM60OJJsT4jTS1T9aKopGzdOUu/8YYUvlmLqn9Rv7+Samw28oCYFuRU//
+                  rcqjaMrHbQph0kmDLYF/FXpYq0BIBaVUkK5A948dCtX83lawc7SeFVmSY6kvPFpa
+                  1IvQ7ZY7upWay9wySOb6nJprWnWz9m/D7G2849A73g60nMRgdab8NkaSxRBKmT6R
+                  XssIUxECgYEA/1pVpRlyztV9sUV5zNLB6tQB+nCOUjPutnrPv8IztbxKTQDssDKg
+                  34jxbBcg8I2TXcBuUuCoSL+7E86uqwt7BF6fRrUSbnPD+yaBMgQVSCRcuKQXnz4e
+                  QDP2U+uV6G3U11ZePxg7VcmBHjrMsjDP9hOHCzhYPtoY7Na30MvjnskCgYEA4Aj2
+                  Iiw9sTEKlmZ39FIDzaRdtOYSoxffpZf7dl3wNnJ5B2ukOnthTgI8/MI6rDgzUsL1
+                  6p09s5FUWUU8sNwWXxEEJyvlQ++Fx5BLZ5VnUxVcXGjcIf1+0cjjX2BlhgcWWuVY
+                  /jg64/kECI8wXc/SdVx6mAQ8VQVCQxMeHh9qdHECgYEAzLxfIurOlGu0RagQylrJ
+                  REEL/QK1+c7NvN2nKHbLAxGe+TKek39kYRXpi+LXdEfvOiIJ0sVx6DJiCrWScm3Y
+                  Cl7bkdOonYqQPhRXTgTcE2WkOh7HGdSyaIPBIvQm058MIkOLeUcye8v+jIBUkyJz
+                  +zcY9bQNfQddKLfX1b9EF5ECgYEAoVnS6wmx5MvNNETYX74xvwmB86dABPZMvJaZ
+                  JMbDGnOXdyCvRu9VRTmXcvLwDtjrHdAMDMzyg0FH3oNfEoFwG0fGFfAnTqZTU0c5
+                  B4EyyUO5IVTkNha8H5rvJuHmPIEeOJi1X2JgB5BwtzlpPCdRC/Vu1c03JoSDFIvQ
+                  RSGbKgECgYEA4P+92xp7cXoClUlvIK6o8CRO+kEBp7se7YkYGFGQO5FWM3bIoM2k
+                  CLZpa+o9OvgtaCDmMwwcEoYp+y4Cmm01VQbJKigmCPkt/NQxCiKDqv1FZwAIlk5B
+                  7UuFwxsnHLJmENhQtQkDMw4QqHkYlwkBFuhTWIOUlLGoko2u0XT3Y1o=
                   -----END RSA PRIVATE KEY-----`;
-                  const session = `qZvlFGexVzaxeiXDC2wcPm8knx2GabzljU5SD2VAX+l8YfbLtok6J8qS9/pflT9hkVVdGBXw71sEAqb92nFHGDQ6flmP4vuYNEgMRFz4IOuY6fgoWm7lD2NtYPjX1Wcp8pNhegyLakYKChhzWLrAe6Rl4zTUdp1vhM93RdAxWZnI3H/iDGIuTh78hq7zqKi7x0akriCLiUvrN5FgvOSFQgOAS0fLZb4zTRaDyZ2PAU4Hmb8/ApRszrdZFagE0mcKYV1v4YBDVjaHtwkXrzbIxY+Jy69PcegDRCgpkO/EzEiAplwtzh2p/MwDwPnRbibRv/UwtHo/nloe7hrMEo6WNg==`;
-                  RSA.decrypt(rsaEncryptedMessage, privateKey2).then(
-                    decryptedMessage => {
-                      setRSADecryptedMessage(decryptedMessage);
-                      // console.log(`The original message was ${origianlMessage}`);
-                    },
-                  );
+                  const session = `qHBkWlVPHU+1C1XJgffKq38kMcga8BK3Ii2BYUKtHMqFPK3QhPtGwr2KtHn7TGFsZIzsU0vgyk7hQNxw+d4Bd1d5HCg4/EPu8La+BB/JEc3LttKk7Y81kr4Wt1Q3eUkgiK7OwuzDTzC7Mrm9HjlPeUgSKgXZQVumvTpNtHG04CeFlKKKYLiXeHBPAtddi/BBfgkVKbHdqujDYIN/Z8xoQy5h4QkHCrMnzUyddMw6RawB38pvwma7/iudh3HBlfkFniCXX3zuLSQHwXOjsEkVESbeX2lLYGnI5N71ZwZKtAHyxrVE4uGWTv8BZ5Ic6mp8e1JUZXy1mFq5N9EWJRT2Mg==`;
+                  RSA.decrypt(session, privateKey2).then(decryptedMessage => {
+                    setRSADecryptedMessage(decryptedMessage);
+                    // console.log(`The original message was ${origianlMessage}`);
+                  });
                 }}
               />
               <Text style={styles.text}>{rsaDecryptedMessage}</Text>
